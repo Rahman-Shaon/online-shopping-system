@@ -3,7 +3,12 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
+
+{% if name == "Shaon" %}
+
 <h1>Welcome {{ name}} </h1>
 <h1>Welcome to My Flask Shop</h1>
 <p>This is the home page.</p>
+{% endif %}
+
 {% endblock %}

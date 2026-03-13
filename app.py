@@ -1,7 +1,8 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, flash
 import mysql.connector
 
 app = Flask(__name__)
+app.secret_key = "secret123"
 
 db = mysql.connector.connect(
     host = "localhost",
@@ -46,6 +47,19 @@ def users():
 
     return render_template("users.html", users=all_users)
 
+
+@app.route("/delete/<int:id>")
+def delete(id):
+
+    sql = "DELETE FROM users WHERE id = %s"
+    val = (id,)
+
+    cursor.execute(sql, val)
+    db.commit()
+
+    flash("User deleted successfully")
+
+    return redirect("/users")
 
 
 if __name__ == "__main__":
