@@ -34,7 +34,9 @@ def submit ():
     cursor.execute(sql, val)
     db.commit()
 
-    return f"Hello {username}, saved to database!"
+    flash(f"Hello {username}, saved to database")   #this f help to put value inside {}
+    return redirect("/form")
+    # return f"Hello {username}, saved to database!"
 
 
 @app.route("/users")
@@ -59,6 +61,32 @@ def delete(id):
 
     flash("User deleted successfully")
 
+    return redirect("/users")
+
+
+@app.route("/edit/<int:id>")
+def edit(id):
+
+    sql = "Select * from users where id = %s"
+    val = (id,)
+
+    cursor.execute(sql, val)
+    user = cursor.fetchone()
+
+    return render_template("edit.html", user = user)
+
+
+@app.route("/update/<int:id>", methods = ["POST"])
+def update(id):
+
+    username = request.form["username"]
+    sql = "Update users Set username = %s where id = %s"
+    val = (username, id)
+
+    cursor.execute(sql, val)
+    db.commit()
+
+    flash("User Updated Successfully")
     return redirect("/users")
 
 

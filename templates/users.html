@@ -9,7 +9,7 @@
 {% with messages = get_flashed_messages() %}
 {% if messages %}
 {% for message in messages %}
-<p>{{ message }}</p>
+<p style = "color:aqua">{{ message }}</p>
 {% endfor %}
 {% endif %}
 {% endwith %}
@@ -19,6 +19,7 @@
     {% for user in users %}
     <li>
         {{ user[1] }}
+        <a href="/edit/{{user[0]}}">Edit</a>
         <a href="/delete/{{user[0]}}">Delete</a>
     </li>
     {% endfor %}
