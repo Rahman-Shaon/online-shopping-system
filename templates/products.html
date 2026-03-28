@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %} Products {% endblock %}
+
+{% block content %}
+
+
+<!-- <form action="/submit" method="post">
+    <input type="image">
+    <button type="submit">Add</button>
+</form> -->
+
+<div class="product-container">
+    <img src="{{url_for('static', filename = 'images/tadeusz-lakota-Tb38UzCvKCY-unsplash2.jpg') }}"
+        alt="Failed to load image" width="400">
+    <!-- <h4>Silver Watch</h4> -->
+    
+    <img src="{{url_for('static', filename = 'images/bruno-van-der-kraan-VRERJ5Mjp4c-unsplash.jpg')}}"
+        alt="Failed to load images" width="400">
+    <!-- <h4>Golden Watch</h4> -->
+
+    <img src="{{url_for('static', filename = 'images/huy-phan-_LWxQJFgpyo-unsplash.jpg')}}" alt="Failed to load image"
+        width="400">
+    <!-- <h4>Aquarium</h4> -->
+</div>
+
+
+
+{% endblock %}
